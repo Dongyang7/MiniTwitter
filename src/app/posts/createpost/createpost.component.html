@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">{{title}}</div>
+  <div class="panel-body">
+    <div class="form-group">
+      <label>Post Title</label>
+      <input type="text" placeholder="Title" [(ngModel)]="post.title" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" placeholder="Description" [(ngModel)]="post.description" class="form-control">
+    </div>
+    <button *ngIf="editing" class="btn btn-success" (click)="updatepost()">Update</button>
+    <button *ngIf="!editing" class="btn btn-success" (click)="createpost()">Submit</button>
+  </div>
+</div>

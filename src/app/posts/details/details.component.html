@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a [routerLink]="['/posts/details', post.title]">
+          {{post.title}}
+        </a>
+    </div>
+    <div class="panel-body">
+      <span>{{post.description}}</span>
+      <button class="btn btn-success" (click)="showcomments(post._id)">Comment</button>
+      <a class="fas fa-thumbs-up" (click)="like(post._id)"></a>
+      <span (click)="showliked = !showliked"><a>  {{likenumber}}</a></span>
+      <span *ngIf="showliked">
+        <span *ngFor="let likeduser of likedusers">{{likeduser}}</span>
+      </span>
+      <button class="btn btn-danger" (click)="deletepost()">Delete Post</button>
+    </div>
+    <div id="{{post._id}}" *ngIf="comments" class="panel panel-primary">
+      <div class="panel-heading">Comments</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <input type="text" placeholder="comment here" [(ngModel)]="newcomment" 
+          class="form-control form-inline">
+        </div>
+        <button type="submit" class="btn btn-success" (click)="addcomment(post._id)">
+          Add Comment
+        </button>
+        <div>
+          <div *ngFor="let comment of comments">
+            {{comment.username}}: {{comment.body}}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
